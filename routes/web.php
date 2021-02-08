@@ -11,6 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['middleware' => ['web']], function()  {
+
+    Route::get('/', 'PagesController@getIndex')->name('homepage');
+
+    Route::get('about', 'PagesController@getAbout');
+
+    Route::get('contact', 'PagesController@getContact');
+
+    Route::get('/categories', 'CategoryController@index')->name('all-categories');
+
+    Route::get('/products', 'ProductController@index')->name('all-products');
+
+    Route::get('/create-category', 'CategoryController@create')->name('create-category');
 });
