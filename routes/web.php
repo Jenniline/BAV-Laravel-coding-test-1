@@ -29,7 +29,9 @@ Route::group(['middleware' => ['web']], function()  {
      /**Product Routes */
     Route::get('/products', 'ProductController@index' )->name('all-products');
     Route::get('/create-product', 'ProductController@create')->name('create-product');
+    Route::post('/store-product', 'ProductController@store')->name('store-product');
 
-    
+
+
 
 });

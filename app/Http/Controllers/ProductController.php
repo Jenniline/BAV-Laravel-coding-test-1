@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\ProductImage;
+
 
 
 class ProductController extends Controller
@@ -41,45 +43,38 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'name' => 'required|min:3|max:20',
-            'description' => 'required|min:5|max:100',
-            'price' => 'required',
-            // 'category_id' => 'required',
-            'product_images' => 'required|array',
-            'product_images.*' => 'image|mimes:jpg,png,jpeg',
+       $this->validate($request,[
+            'product_name' => 'required|min:3|max:20',
+            'product_description' => 'required|min:5|max:100',
+            'product_price' => 'required',
+            'category_id' => 'required',
+            // 'images' => 'required|array',
+            'product_image.*' => 'image|mimes:jpg,png,jpeg',
         ]);
-         
+           
 
         $product = new Product;
         $product->name = $request->product_name;
         $product->description = $request->product_description;
         $product->price = $request->product_price;
-        $product->days = $request->days;
         $product->category_id = $request->category_id;
         $product->save();
 
-        $images = $request->file('product_images');
-        $image_details = array();
+        // $input = $request->file();
 
-        foreach ($images as $image) {
-            $path = $image->store('public/itemImages');
-            $exploded_string = explode("/",$path);
-            $image_details[] = new ProductImage (
-            [
-                'name' => $exploded_string[2], 
-                'path' => "public/itemImages",  
-                'url' => asset("storage/{$exploded_string[1]}/{$exploded_string[2]}")
-            ]
-         );
-        }
+        // $image = $input['product_image'];
+
+        $input = $request->file('product_image');
+        $path = $request->file('product_image')->store('public/categoryImages');
+        $exploded_string = explode("public",$path);
+        $product->image = asset("storage".$exploded_string[1]);
+        $product->save();
+
+       return redirect()->route('homepage')->with('product',$product);
         
-        $product->images()->saveMany($image_details);
         
-        return response()->json([
-            "success"=>true,
-            "message"=> "Product stored successfully"
-        ], 200);
+        
+        
 
     }
 
