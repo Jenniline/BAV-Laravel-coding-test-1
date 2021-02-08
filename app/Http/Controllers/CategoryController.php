@@ -41,28 +41,22 @@ class CategoryController extends Controller
     {
         $this->validate($request, array(
             'category_name' => 'required|min:3|max:20',
-            'image' => 'required|image|mimes:jpeg,jpg,png'
+            'image' => 'required'
         ));
 
-         //saving the category
          $category = new Category;
-         $category->name = $request->name;
- 
+         $category->name = $request->category_name;
+
          $input = $request->file();
- 
-         $images = $input['image'];
+
+        //  $images = $input['image'];
  
          $path = $request->file('image')->store('public/categoryImages');
          $exploded_string = explode("public",$path);
-         $category->url = asset("storage".$exploded_string[1]);
+         $category->image = asset("storage".$exploded_string[1]);
          $category->save();
 
-             // Session and flash message initilaization put for something permanent in the session 
-        Session::flash('success','The category was succesfully saved!');
-
-        // redirect to another page 
-        return redirect()->route('homepage', $category->id);
-
+        return redirect()->route('homepage')->with('category',$category);
     }
 
     /**
@@ -73,13 +67,8 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-         //to view a specific post 
-         $category=Category::find($id);
-         //  return view('posts.show')->withPosts('',$post);
-         return view('show-category.show')->withCategory($category);
-
-         return $category;
-
+        $category=Category::find($id);
+        return view('encategory.show-category')->with('category', $category);
     }
 
     /**
@@ -92,7 +81,7 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
         //return the view 
-        return view('edit-category.edit')->withCategory($category);
+        return view('encategory.edit-category')->with('category', $category);
     }
 
     /**
@@ -110,7 +99,7 @@ class CategoryController extends Controller
         ));
 
         $category = Category::find($id); 
-        $category->name = $request->name; 
+        $category->name = $request->category_name; 
 
         if($request->hasFile('image')){
 
@@ -126,10 +115,10 @@ class CategoryController extends Controller
             $category->save(); 
         }
 
-        Session::flash('success','The blog post was succesfully saved!');
+        // Session::flash('success','The blog post was succesfully saved!');
 
         // redirect to another page 
-        return redirect()->route('homepage', $category->id);
+        return redirect()->route('show-category', $category->id);
     }
 
     /**
@@ -140,26 +129,28 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $products = Product::where('category_id', $id)->get();
+        // $products = Product::where('category_id', $id)->get();
 
-        if (sizeof($products) > 0) {
+        // if (sizeof($products) > 0) {
             
-            return response()->json([
-                "success" => false,
-                "message"  => "Category cannot be deleted it is associated with products",
-            ],400);
-        }
+        //     return response()->json([
+        //         "success" => false,
+        //         "message"  => "Category cannot be deleted it is associated with products",
+        //     ],400);
+        // }
         
-        $category = Category::findOrFail($id);
-        $categoryImgUrl = $category->url; 
+        // $category = Category::findOrFail($id);
+        // $categoryImgUrl = $category->url; 
+
+        $category = Category::find($id);
 
         $category->delete();
 
-        $categoryArray = explode('/categoryImages/', $categoryImgUrl);
-        $oldPath = storage_path("app/public/categoryImages/" . end($categoryArray));
-        @unlink($oldPath);
+        // $categoryArray = explode('/categoryImages/', $categoryImgUrl);
+        // $oldPath = storage_path("app/public/categoryImages/" . end($categoryArray));
+        // @unlink($oldPath);
 
-        Session::flash('success','The blog post was succesfully saved!');
+        // Session::flash('success','The blog post was succesfully saved!');
 
         // redirect to another page 
         return redirect()->route('homepage', $category->id);

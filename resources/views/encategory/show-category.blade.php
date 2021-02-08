@@ -1,6 +1,6 @@
 @extends('main') 
 
-@section('title', '| View Post')
+@section('title', '| View Category')
     
 {{-- @endsection --}} 
 
@@ -11,42 +11,23 @@
 </div> --}}
 
 <div class="row">
-    <div class="col-md-8">
-   <h1>  category id is: {{ $category->id }}</h1>
-   
-      category name:  <h1>{{ $category->name }}</h1>
+    <div class="col-md-6">
+        <h3>VIEW CATEGORY</h3>
+        <div class="card" style="width: 58rem;">
+            <div class="card-body">
+             <h5 class="card-title">  CATEGORY NAME: <h1>  {{$category->name}} </h1></h5>
+             <h6 class="card-subtitle mb-2 text-muted">Category id: {{$category->id}} </h6>
+             <p>CREATED AT: {{$category->created_at}} </p> <p>UPDATED AT: {{$category->updated_at}} </p> 
 
-      category image: {{ $category->url}} 
-    </div> 
-            {{-- SideBar --}} 
+             <h3>Category Image is</h3> 
+             <p>  image here</p>
 
-            <div class="col-md-4 bg bg-light text text-center mt-4 p-3 border border-dark">
+              <a class="btn btn-success" href="{{route('edit-category', $category->id)}}" role="button">Edit</a>
 
-                {{-- <div>
+              <a class="btn btn-danger" href="{{route('delete-category', $category->id)}}" role="button">Delete</a>
 
-                    <label> Url:</label>
-                <a href="{{ route('blog.single', $category->slug) }}"> {{ route('blog.single', $category->slug)}} </a> 
-                <br>
-                    <div> --}}
 
-                       
-                            <label>Created at: </label>
-                        <span>{{date('M j, Y H:i', strtotime($category->created_at))}}</span>
-                    </div>
-            <br>
-                    <div>
-                            <label>Last Updated at: </label>
-                        <span>{{ date('M j, Y H:i', strtotime($category->updated_at))}}</span>
-                    </div>
-              
-
-                <hr>
-               
+            </div>
         </div>
-
-
-
-
-
-
+    </div>
 @endsection

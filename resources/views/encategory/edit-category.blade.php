@@ -1,18 +1,19 @@
 @extends('main') 
 
-@section('title','| Categories_page')
+@section('title','| Edit Category')
 
     @section('stylesheets') 
     <link rel="stylesheet" type="text/css" href="styles.css">
     @endsection
 
 @section('content')
-    <form>
+    <h4> EDIT CATEGORY {{$category->name}} </h4>
+    <form action="{{route('update-category',  $category->id)}}" method="POST">
         @csrf
         <div class="form-group">
 
         <label for="category_name"> <h3>CATEGORY NAME</h3> </label>
-        <input type="password" class="form-control" id="category_name" name="category_name">
+        <input class="form-control" id="category_name" name="category_name">
         </div>
 
         <div class="form-group">

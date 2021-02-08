@@ -36,9 +36,13 @@
         </div>
         <br>
 
-        <button type="button" class="btn btn-success">Edit</button>
+        <a  class="btn btn-info" href="{{route('show-category', $category->id)}}"  role="button">View</a>
 
-        <button type="button" class="btn btn-danger">Delete</button>
+        <a class="btn btn-success" href="{{route('edit-category', $category->id)}}" role="button">Edit</a>
+
+        <a class="btn btn-danger" href="{{route('delete-category', $category->id)}}" role="button">Delete</a>
+
+     
 
       </div>
     </div>
