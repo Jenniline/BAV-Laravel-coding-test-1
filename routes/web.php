@@ -14,15 +14,11 @@
 Route::group(['middleware' => ['web']], function()  {
 
     Route::get('/', 'PagesController@getIndex')->name('homepage');
-
     Route::get('about', 'PagesController@getAbout');
-
     Route::get('contact', 'PagesController@getContact');
-
     Route::get('/categories', 'CategoryController@index')->name('all-categories');
 
-    Route::get('/products', 'ProductController@index' )->name('all-products');
-
+ /**Category Routes */
     Route::get('/create-category', 'CategoryController@create')->name('create-category');
     Route::post('/store-category', 'CategoryController@store')->name('store-category');
     Route::get('/show-category/{category}', 'CategoryController@show')->name('show-category');
@@ -30,5 +26,10 @@ Route::group(['middleware' => ['web']], function()  {
     Route::post('update-category/{category}', 'CategoryController@update')->name('update-category');
     Route::delete('delete-category','CategoryController@destroy')->name('delete-category');
 
+     /**Product Routes */
+    Route::get('/products', 'ProductController@index' )->name('all-products');
+    Route::get('/create-product', 'ProductController@create')->name('create-product');
+
+    
 
 });

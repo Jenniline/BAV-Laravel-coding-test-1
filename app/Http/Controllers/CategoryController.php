@@ -16,7 +16,6 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::all();
-
         return view('encategory.category_card')
                 ->with('categories', $categories);
     }
@@ -41,7 +40,7 @@ class CategoryController extends Controller
     {
         $this->validate($request, array(
             'category_name' => 'required|min:3|max:20',
-            'image' => 'required'
+            'category_image' => 'required'
         ));
 
          $category = new Category;
@@ -49,9 +48,9 @@ class CategoryController extends Controller
 
          $input = $request->file();
 
-        //  $images = $input['image'];
+         $images = $input['category_image'];
  
-         $path = $request->file('image')->store('public/categoryImages');
+         $path = $request->file('category_image')->store('public/categoryImages');
          $exploded_string = explode("public",$path);
          $category->image = asset("storage".$exploded_string[1]);
          $category->save();

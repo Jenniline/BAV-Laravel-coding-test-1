@@ -8,7 +8,7 @@
 
 @section('content')
     <form method="POST" action="{{route('store-category')}}">
-        @csrf
+     
         {{ csrf_field() }}
         <div class="form-group">
 
@@ -18,7 +18,7 @@
 
         <div class="form-group">
             <label for="exampleFormControlFile1"> <h3>  UPLOAD AN IMAGE</h3></label>
-            <input type="file" class="form-control-file" name="image" id="exampleFormControlFile1">
+            <input type="file" class="form-control-file" name="category_image" id="exampleFormControlFile1">
         </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>

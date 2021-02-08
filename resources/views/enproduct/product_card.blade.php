@@ -13,8 +13,9 @@
 @section('content') 
 
 <div class="row">
-  <a href="  "> <button type="button" class="btn btn-primary btn-lg">CREATE A PRODUCT</button>   </a>  
-  </div>
+  <a href="{{route('create-product')}}"> <button type="button" class="btn btn-primary btn-lg">ADD A PRODUCT</button> </a> 
+</div>
+
   <br>
 
  <div class="row">
