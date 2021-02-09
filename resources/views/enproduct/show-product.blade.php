@@ -22,7 +22,8 @@
              <p>CREATED AT: {{$product->created_at}} </p> <p>UPDATED AT: {{$product->updated_at}} </p> 
 
              <h3>Product Image is</h3> 
-             <p>  image here</p>
+             <img src="{{ $product->image ?? asset('/img/codtestimages/food1.jpeg')}}" class="card-img-top" alt="Product">
+
 
               <a class="btn btn-success" href="{{route('edit-product', $product->id)}}" role="button">Edit</a>
 

@@ -20,7 +20,8 @@
              <p>CREATED AT: {{$category->created_at}} </p> <p>UPDATED AT: {{$category->updated_at}} </p> 
 
              <h3>Category Image is</h3> 
-             <p>  image here</p>
+             <img src="{{ $category->image ?? asset('/img/codtestimages/food1.jpeg')}}" class="card-img-top" alt="Category">
+
 
               <a class="btn btn-success" href="{{route('edit-category', $category->id)}}" role="button">Edit</a>
 

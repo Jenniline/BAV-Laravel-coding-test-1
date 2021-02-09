@@ -16,21 +16,19 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-      
-        // if( $request->get('category') ) {
-        //     $category_name = $request->get('category');
-        //     $category_id = ServiceProviderCategory::where('name',$category_name)->value('id');     
-        //     $serviceProviders = ServiceProvider::where('category_id','=',$category_id)
-        //                                         ->get();
-        //     return view('fr.service-providers')
-        //             ->with('serviceProviders', $serviceProviders);
-        // }
+        if( $request->get('category') ) {
+            $category_name = $request->get('category');
+            $category_id = Category::where('name',$category_name)->value('id');     
+            $products = Product::where('category_id','=',$category_id)
+                                                ->get();
+            return view('enproduct.product_card')
+               ->with('products', $products);  
+        }
         $products = Product::all();
         return view('enproduct.product_card')
-               ->with('products', $products);
-        
+               ->with('products', $products);   
     }
 
     /**

@@ -13,7 +13,7 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $categories = Category::all();
         return view('encategory.category_card')
@@ -66,9 +66,7 @@ class CategoryController extends Controller
         $category->name = $request->category_name;
 
         $input = $request->file();
-
         $images = $input['image'];
-
         $path = $request->file('image')->store('public/categoryImages');
         $exploded_string = explode("public",$path);
         $category->image = asset("storage".$exploded_string[1]);
