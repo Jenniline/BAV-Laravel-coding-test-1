@@ -14,7 +14,7 @@
 
 
 
-<div class="card" style="width: 40rem;">
+<div class="card" style="width: 45rem;">
     <img src="{{asset('/img/codtestimages/my_pic.png')}}" class="card-img-top" alt="MY PIC">
 
     <div class="card-body">
@@ -24,7 +24,9 @@
     <ul class="list-group list-group-flush">
       <li> <h3 class="card-title"> PHONE NUMBER: +237 680497435 </h3> </li> 
     <li> <h3 class="card-title"> Email: jennilineebai@gmail.com </h3></li>   
-    <li> <h3 class="card-title"> Location: Buea Cameroon</h3></li>      </ul>
+    <li> <h3 class="card-title"> Location: Buea Cameroon</h3></li> </ul>
+    <li> <h3 class="card-title"> Education: Computer Engineering, UNIVERSITY OF BUEA</h3></li> </ul>
+
   </div>
 @endsection 
 
