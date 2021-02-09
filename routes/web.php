@@ -26,10 +26,15 @@ Route::group(['middleware' => ['web']], function()  {
     Route::post('update-category/{category}', 'CategoryController@update')->name('update-category');
     Route::delete('delete-category','CategoryController@destroy')->name('delete-category');
 
-     /**Product Routes */
+/**Product Routes */
     Route::get('/products', 'ProductController@index' )->name('all-products');
     Route::get('/create-product', 'ProductController@create')->name('create-product');
     Route::post('/store-product', 'ProductController@store')->name('store-product');
+    Route::get('/show-product/{product}', 'ProductController@show')->name('show-product');
+    Route::get('/edit-product/{product}', 'ProductController@edit')->name('edit-product');
+    Route::post('update-product/{product}', 'ProductController@update')->name('update-product');
+    Route::delete('delete-product','ProductController@destroy')->name('delete-product');
+
 
 
 
