@@ -7,31 +7,24 @@
     <div class="row">
         <div class="col-md-12">
             <h1>About Me</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat dolorum aliquam consectetur sapiente voluptatum officiis inventore, 
-            aspernatur aut vel qui voluptatem distinctio maiores est repudiandae unde perferendis consequatur quod similique. Adding a test change after clonning on vscode Elementary
-        </p> 
-        <p>dlisfhdks lalallalal</p>
-
+          <p> This is a coding I Jenniline Ebai Final year student at the UNIVERSITY OF BUEA. performed for the position of a laravel developer at BRIDGE ADVENTURES </p>
+          <h4>l enjoyed working on this project. It challenged me as I worked under pressure this project brought out qualities in me that I never knew existed.  And I am ready to do more for BRIDGE ADVENTURES</h4>
         </div>
     </div>
 
 
 
-<div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
+<div class="card" style="width: 40rem;">
+    <img src="{{asset('/img/codtestimages/my_pic.png')}}" class="card-img-top" alt="MY PIC">
+
     <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <h1 class="card-title"> NAME: Jenniline Ebai </h1>
+      {{-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> --}}
     </div>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">Cras justo odio</li>
-      <li class="list-group-item">Dapibus ac facilisis in</li>
-      <li class="list-group-item">Vestibulum at eros</li>
-    </ul>
-    <div class="card-body">
-      <a href="#" class="card-link">Card link</a>
-      <a href="#" class="card-link">Another link</a>
-    </div>
+      <li> <h3 class="card-title"> PHONE NUMBER: +237 680497435 </h3> </li> 
+    <li> <h3 class="card-title"> Email: jennilineebai@gmail.com </h3></li>   
+    <li> <h3 class="card-title"> Location: Buea Cameroon</h3></li>      </ul>
   </div>
 @endsection 
 
