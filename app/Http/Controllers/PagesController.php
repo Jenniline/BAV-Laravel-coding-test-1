@@ -7,13 +7,13 @@ use App\Post;
 class PagesController extends Controller {
     
     public function getIndex() {
-        return view('pages.welcome');
+        return view('pages.landingpage');
     }
 
     public function getAbout() {
 
-        $first='Jenniline';
-        $last = 'Ebai';
+        $first='BRIGE';
+        $last = 'ADVENTURES';
 
         $fullname = $first . " " . $last ;
         $email = 'jennilineebai@gmail.com';

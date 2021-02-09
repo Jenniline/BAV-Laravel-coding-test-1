@@ -9,6 +9,7 @@
 @section('content')
 {{-- @endsectionform method="post" action=" {{ url('user-store') }} "> --}}
 <form method="POST" action="{{route('user-registratio-store')}}">
+    <h1>REGISTER</h1>
     <div class="card shadow mb-4">
         <div class="car-header bg-success pt-2">
             <div class="card-title font-weight-bold text-white text-center"> User Registration </div>

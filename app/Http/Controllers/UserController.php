@@ -80,5 +80,23 @@ class UserController extends Controller
         }
     }
 
+    // ------------------ [ User Dashboard Section ] ---------------------
+    public function dashboard() {
+
+        // check if user logged in
+        if(Auth::check()) {
+            return view('pages.welcome');
+        }
+
+        return redirect::to("user-login")->withSuccess('Oopps! You do not have access');
+    }
+
+    // ------------------- [ User logout function ] ----------------------
+    public function logout(Request $request ) {
+        $request->session()->flush();
+        Auth::logout();
+        return Redirect('user-login-form');
+    }
+
 
 }

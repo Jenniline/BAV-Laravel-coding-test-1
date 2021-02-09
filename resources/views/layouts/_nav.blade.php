@@ -46,9 +46,14 @@
                </div>
             </li>
 
-         <a href="{{route('user-login-form')}}"><button type="button" class="btn btn-primary">LOGIN</button></a>   
 
-          <a href="{{route('user-registration-form')}}"><button type="button" class="btn btn-primary">register</button> </a> 
+          <a href="{{route('user-registration-form')}}"><button type="button" class="btn btn-primary">register</button> </a>
+
+          <a href="{{route('user-login-form')}}"><button type="button" class="btn btn-primary">LOGIN</button></a>   
+
+          
+          <a href="{{route('user-logout')}}"> <button type="button" class="btn btn-primary"> Logout</button></a>
+
 
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>

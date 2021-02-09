@@ -11,25 +11,53 @@
 |
 */
 
+//Authentication routes
+Route::group([
+    
+    'middleware' => 'api',
+    'prefix'=>'auth',
+    // 'namespace' => 'UserAuth'
+],
+    function(){
+    /**Registration Routes */
+    Route::get('user-registration', 'UserController@index')->name('user-registration-form');
+    Route::post('user-store', 'UserController@userPostRegistration')->name('user-registratio-store');
+    /**Login Routes */
+    Route::get('user-login', 'UserController@userLoginIndex')->name('user-login-form');
+    Route::post('login', 'UserController@userPostLogin')->name('user-login-store');
+
+    /**Logout Routes */
+    Route::get('logout', 'UserController@logout')->name('user-logout');
+
+    }
+);
+
+
+
 Route::group(['middleware' => ['web']], function()  {
 
     // Route::get('/login', 'MainController@index')->name('login-form');
 
-    /**Authentication Routes */
+/**Authentication Routes */
 
-        /**Registration Routes */
-        Route::get('user-registration', 'UserController@index')->name('user-registration-form');
-        Route::post('user-store', 'UserController@userPostRegistration')->name('user-registratio-store');
-        /**Login Routes */
-        Route::get('user-login', 'UserController@userLoginIndex')->name('user-login-form');
-        Route::post('login', 'UserController@userPostLogin')->name('user-login-store');
+    /**Registration Routes */
+    // Route::get('user-registration', 'UserController@index')->name('user-registration-form');
+    // Route::post('user-store', 'UserController@userPostRegistration')->name('user-registratio-store');
+    /**Login Routes */
+    // Route::get('user-login', 'UserController@userLoginIndex')->name('user-login-form');
+    // Route::post('login', 'UserController@userPostLogin')->name('user-login-store');
 
+    /**Logout Routes */
+    // Route::get('logout', 'UserController@logout')->name('user-logout');
 
-     /**Pages on the NavBar Routes */
-    Route::get('/', 'PagesController@getIndex')->name('homepage');
+/**Pages on the NavBar Routes */
+    // Route::get('welcome', 'PagesController@getIndex')->name('homepage');
     Route::get('about', 'PagesController@getAbout');
     Route::get('contact', 'PagesController@getContact');
     Route::get('/categories', 'CategoryController@index')->name('all-categories');
+    Route::get('/', 'PagesController@getIndex')->name('homepage');
+
+        
 
  /**Category Routes */
     Route::get('/create-category', 'CategoryController@create')->name('create-category');
