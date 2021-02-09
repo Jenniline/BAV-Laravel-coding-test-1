@@ -51,7 +51,7 @@ Route::group(['middleware' => ['web']], function()  {
     // Route::get('logout', 'UserController@logout')->name('user-logout');
 
 /**Pages on the NavBar Routes */
-    // Route::get('welcome', 'PagesController@getIndex')->name('homepage');
+    Route::get('welcome', 'PagesController@getWelcome')->name('welcome');
     Route::get('about', 'PagesController@getAbout');
     Route::get('contact', 'PagesController@getContact');
     Route::get('/categories', 'CategoryController@index')->name('all-categories');

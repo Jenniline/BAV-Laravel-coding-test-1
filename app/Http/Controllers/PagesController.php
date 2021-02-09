@@ -28,6 +28,10 @@ class PagesController extends Controller {
     public function getContact(){
         return view ('pages.contact');
     }
+    public function getWelcome() {
+        return view('pages.welcome');
+    }
+
   
 
 }

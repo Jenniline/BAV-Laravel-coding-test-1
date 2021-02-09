@@ -23,7 +23,7 @@
     
     <div class="col-md-4">
         <div class="card" style="width: 18rem;">
-          <img src="{{ $product->image ?? asset('/img/codtestimages/food1.jpeg')}}" class="card-img-top" alt="food1">
+          <img src="{{ $product->image ?? asset('/img/codtestimages/food1.jpeg')}}" class="card-img-top" alt="Product">
 
           {{-- <img src=" {{('/img/codtestimages' . $product->images->name)}}" alt="image"> --}}
         

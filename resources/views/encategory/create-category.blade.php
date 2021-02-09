@@ -7,7 +7,7 @@
     @endsection
 
 @section('content')
-    <form method="POST" action="{{route('store-category')}}">
+    <form method="POST" action="{{route('store-category')}}" enctype="multipart/form-data">
      
         {{ csrf_field() }}
         <div class="form-group">

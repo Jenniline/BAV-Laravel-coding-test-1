@@ -44,7 +44,7 @@ class UserController extends Controller
             // return back()->with('success', 'You have registered successfully.');
 
             return view ('pages.welcome')
-            ->with('success', 'You have registered successfully.');
+                  ->with('success', 'You have registered successfully.');
 
         }
 

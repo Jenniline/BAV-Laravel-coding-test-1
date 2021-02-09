@@ -63,7 +63,7 @@ class CategoryController extends Controller
 
         //saving the category
         $category = new Category;
-        $category->name = $request->name;
+        $category->name = $request->category_name;
 
         $input = $request->file();
 
@@ -71,11 +71,11 @@ class CategoryController extends Controller
 
         $path = $request->file('image')->store('public/categoryImages');
         $exploded_string = explode("public",$path);
-        $category->url = asset("storage".$exploded_string[1]);
+        $category->image = asset("storage".$exploded_string[1]);
         $category->save();
         //dd($exploded_string);
 
-        return redirect()->route('homepage')->with('category',$category);
+        return redirect()->route('all-categories')->with('category',$category);
     }
 
     /**
