@@ -29,23 +29,6 @@
 
         
           <form class="form-inline my-2 my-lg-0">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                My Account
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                {{-- <a class="dropdown-item" href=" {{ route('posts.index') }} ">Posts</a> --}}
-                <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                {{-- <li role="separator" class="divider"></li> --}}
-              
-
-                <a class="dropdown-item" href="#">Logout</a>
-              </a>  
-
-               </div>
-            </li>
-
 
           <a href="{{route('user-registration-form')}}"><button type="button" class="btn btn-primary">register</button> </a>
 
