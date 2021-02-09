@@ -13,6 +13,19 @@
 
 Route::group(['middleware' => ['web']], function()  {
 
+    // Route::get('/login', 'MainController@index')->name('login-form');
+
+    /**Authentication Routes */
+
+        /**Registration Routes */
+        Route::get('user-registration', 'UserController@index')->name('user-registration-form');
+        Route::post('user-store', 'UserController@userPostRegistration')->name('user-registratio-store');
+        /**Login Routes */
+        Route::get('user-login', 'UserController@userLoginIndex')->name('user-login-form');
+        Route::post('login', 'UserController@userPostLogin')->name('user-login-store');
+
+
+     /**Pages on the NavBar Routes */
     Route::get('/', 'PagesController@getIndex')->name('homepage');
     Route::get('about', 'PagesController@getAbout');
     Route::get('contact', 'PagesController@getContact');
@@ -34,9 +47,5 @@ Route::group(['middleware' => ['web']], function()  {
     Route::get('/edit-product/{product}', 'ProductController@edit')->name('edit-product');
     Route::post('update-product/{product}', 'ProductController@update')->name('update-product');
     Route::delete('delete-product','ProductController@destroy')->name('delete-product');
-
-
-
-
 
 });

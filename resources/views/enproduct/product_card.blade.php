@@ -23,7 +23,7 @@
     
     <div class="col-md-4">
         <div class="card" style="width: 18rem;">
-          <img src="{{asset('/img/codtestimages/food1.jpeg')}}" class="card-img-top" alt="food1">
+          <img src="{{ $product->image ?? asset('/img/codtestimages/food1.jpeg')}}" class="card-img-top" alt="food1">
 
           {{-- <img src=" {{('/img/codtestimages' . $product->images->name)}}" alt="image"> --}}
         
@@ -34,9 +34,10 @@
             <p class="card-text"> {{$product->description}} </p>
             {{-- <a href="#" class="btn btn-primary">Go somewhere</a> --}}
 
-        <button type="button" class="btn btn-success">Edit</button>
+        <a  class="btn btn-info" href="{{route('show-product', $product->id)}}"  role="button">View</a>
+        <a class="btn btn-success" href="{{route('edit-product', $product->id)}}" role="button">Edit</a>
 
-        <button type="button" class="btn btn-danger">Delete</button>
+        <a class="btn btn-danger" href="{{route('delete-product', $product->id)}}" role="button">Delete</a>
           </div>
         </div>
       </div>

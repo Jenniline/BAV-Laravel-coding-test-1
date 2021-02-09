@@ -38,9 +38,18 @@
                 <a class="dropdown-item" href="#">Another action</a>
                 <div class="dropdown-divider"></div>
                 {{-- <li role="separator" class="divider"></li> --}}
+              
+
                 <a class="dropdown-item" href="#">Logout</a>
+              </a>  
+
                </div>
             </li>
+
+         <a href="{{route('user-login-form')}}"><button type="button" class="btn btn-primary">LOGIN</button></a>   
+
+          <a href="{{route('user-registration-form')}}"><button type="button" class="btn btn-primary">register</button> </a> 
+
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>

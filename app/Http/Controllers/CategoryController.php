@@ -38,22 +38,42 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, array(
+        // $this->validate($request, array(
+        //     'category_name' => 'required|min:3|max:20',
+        //     'image.*' => 'image|mimes:jpg,png,jpeg',
+        // ));
+
+        //  $category = new Category;
+        //  $category->name = $request->category_name;
+        //  $category->save();
+
+        //  $input = $request->file();
+
+        //  $images = $input['image'];
+ 
+        //  $path = $request->file('image')->store('public/categoryImages');
+        //  $exploded_string = explode("public", $path);
+        //  $category->image = asset("storage" . $exploded_string[1]);
+        //  $category->save();
+
+         $this->validate($request, array(
             'category_name' => 'required|min:3|max:20',
-            'category_image' => 'required'
+            'image.*' => 'image|mimes:jpg,png,jpeg',
         ));
 
-         $category = new Category;
-         $category->name = $request->category_name;
+        //saving the category
+        $category = new Category;
+        $category->name = $request->name;
 
-         $input = $request->file();
+        $input = $request->file();
 
-         $images = $input['category_image'];
- 
-         $path = $request->file('category_image')->store('public/categoryImages');
-         $exploded_string = explode("public",$path);
-         $category->image = asset("storage".$exploded_string[1]);
-         $category->save();
+        $images = $input['image'];
+
+        $path = $request->file('image')->store('public/categoryImages');
+        $exploded_string = explode("public",$path);
+        $category->url = asset("storage".$exploded_string[1]);
+        $category->save();
+        //dd($exploded_string);
 
         return redirect()->route('homepage')->with('category',$category);
     }

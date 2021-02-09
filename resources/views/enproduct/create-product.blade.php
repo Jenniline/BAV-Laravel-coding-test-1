@@ -7,11 +7,12 @@
     @endsection
 
 @section('content')
-    <form method="POST" action="{{route('store-product')}}">
+    <form method="POST" action="{{route('store-product')}}" enctype="multipart/form-data">
        
         {{ csrf_field() }}
         <div class="form-group">
-
+<h1>CREATE A PRODUCT</h1>
+<br>
         <div class="form-group">
             <label for="exampleFormControlSelect1"> <h3>SELECT A CATEGORY</h3></label>
             <select class="form-control" name="category_id">
@@ -43,7 +44,7 @@
       
         <div class="form-group">
             <label for="exampleFormControlFile1"> <h3>  UPLOAD AN IMAGE</h3></label>
-            <input type="file" class="form-control-file" name="image" id="exampleFormControlFile1">
+            <input type="file" class="form-control-file" name="image" id="image">
         </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>

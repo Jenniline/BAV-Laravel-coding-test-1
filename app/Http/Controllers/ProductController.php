@@ -18,10 +18,19 @@ class ProductController extends Controller
      */
     public function index()
     {
+      
+        // if( $request->get('category') ) {
+        //     $category_name = $request->get('category');
+        //     $category_id = ServiceProviderCategory::where('name',$category_name)->value('id');     
+        //     $serviceProviders = ServiceProvider::where('category_id','=',$category_id)
+        //                                         ->get();
+        //     return view('fr.service-providers')
+        //             ->with('serviceProviders', $serviceProviders);
+        // }
         $products = Product::all();
-
         return view('enproduct.product_card')
-                ->with('products', $products);
+               ->with('products', $products);
+        
     }
 
     /**
@@ -49,10 +58,9 @@ class ProductController extends Controller
             'product_price' => 'required',
             'category_id' => 'required',
             // 'images' => 'required|array',
-            'product_image.*' => 'image|mimes:jpg,png,jpeg',
+            'image.*' => 'image|mimes:jpg,png,jpeg',
         ]);
            
-
         $product = new Product;
         $product->name = $request->product_name;
         $product->description = $request->product_description;
@@ -60,14 +68,13 @@ class ProductController extends Controller
         $product->category_id = $request->category_id;
         $product->save();
 
-        // $input = $request->file();
+        $input = $request->file();
 
-        // $image = $input['product_image'];
+        $images = $input['image'];
 
-        $input = $request->file('product_image');
-        $path = $request->file('product_image')->store('public/categoryImages');
-        $exploded_string = explode("public",$path);
-        $product->image = asset("storage".$exploded_string[1]);
+        $path = $request->file('image')->store('public/productImages');
+        $exploded_string = explode("public", $path);
+        $product->image = asset("storage" . $exploded_string[1]);
         $product->save();
 
        return redirect()->route('homepage')->with('product',$product);
