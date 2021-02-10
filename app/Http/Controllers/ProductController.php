@@ -75,7 +75,7 @@ class ProductController extends Controller
         $product->image = asset("storage" . $exploded_string[1]);
         $product->save();
 
-       return redirect()->route('homepage')->with('product',$product);
+       return redirect()->route('welcome')->with('product',$product);
     }
 
     /**
