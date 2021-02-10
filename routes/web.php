@@ -11,12 +11,12 @@
 |
 */
 
+Route::get('/', 'PagesController@getIndex')->name('homepage');
+
+
 //Authentication routes
 Route::group([
-    
-    'middleware' => 'api',
-    'prefix'=>'auth',
-    // 'namespace' => 'UserAuth'
+        'prefix'=>'auth',
 ],
     function(){
     /**Registration Routes */
@@ -31,8 +31,6 @@ Route::group([
 
     }
 );
-
-
 
 Route::group(['middleware' => ['web']], function()  {
 
@@ -55,7 +53,7 @@ Route::group(['middleware' => ['web']], function()  {
     Route::get('about', 'PagesController@getAbout');
     Route::get('contact', 'PagesController@getContact');
     Route::get('/categories', 'CategoryController@index')->name('all-categories');
-    Route::get('/', 'PagesController@getIndex')->name('homepage');
+    // Route::get('/', 'PagesController@getIndex')->name('homepage');
 
         
 

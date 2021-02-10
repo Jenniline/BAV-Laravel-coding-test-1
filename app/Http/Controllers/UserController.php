@@ -72,7 +72,7 @@ class UserController extends Controller
         // check user using auth function
         if (Auth::attempt($userCredentials)) {
             // return redirect()->intended('dashboard');
-            return redirect()->route('homepage');
+            return redirect()->route('welcome');
         }
 
         else {
