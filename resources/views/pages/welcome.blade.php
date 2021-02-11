@@ -28,15 +28,6 @@
   <br>
   <br>
 
-  {{-- <div class="row">
-    <div class="col-md-4"><a href="{{route('user-registration-form')}}"><button type="button" class="btn btn-primary">register</button> </a>
-    </div>
-    <div class="col-md-4"><a href="{{route('user-login-form')}}"><button type="button" class="btn btn-success">LOGIN</button></a>   
-    </div>
-    <div class="col-md-4"><a href="{{route('user-logout')}}"> <button type="button" class="btn btn-danger"> Logout</button></a>
-    </div>
-  </div> --}}
-
 </div>
       
 

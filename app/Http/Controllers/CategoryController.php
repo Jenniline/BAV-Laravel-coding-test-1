@@ -111,7 +111,7 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, array(
-            'category_name' =>'required|min:3|max:20',
+            // 'category_name' =>'required|min:3|max:20',
             'image' => 'image|mimes:jpeg,jpg,png'
         ));
 

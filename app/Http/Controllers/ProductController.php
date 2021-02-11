@@ -159,13 +159,14 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
         $product->delete();
 
         return response()->json([
             "success" => false,
-            "message"  => "Product deleted, product_images and orders,that are associated with this product have also been deleted",
+            "message"  => "Product deleted",
         ], 200);
+
     }
 }

@@ -34,30 +34,17 @@ Route::group([
 
 Route::group(['middleware' => ['web']], function()  {
 
-    // Route::get('/login', 'MainController@index')->name('login-form');
-
-/**Authentication Routes */
-
-    /**Registration Routes */
-    // Route::get('user-registration', 'UserController@index')->name('user-registration-form');
-    // Route::post('user-store', 'UserController@userPostRegistration')->name('user-registratio-store');
-    /**Login Routes */
-    // Route::get('user-login', 'UserController@userLoginIndex')->name('user-login-form');
-    // Route::post('login', 'UserController@userPostLogin')->name('user-login-store');
-
-    /**Logout Routes */
-    // Route::get('logout', 'UserController@logout')->name('user-logout');
 
 /**Pages on the NavBar Routes */
     Route::get('welcome', 'PagesController@getWelcome')->name('welcome');
     Route::get('about', 'PagesController@getAbout');
     Route::get('contact', 'PagesController@getContact');
-    Route::get('/categories', 'CategoryController@index')->name('all-categories');
     // Route::get('/', 'PagesController@getIndex')->name('homepage');
 
         
 
  /**Category Routes */
+    Route::get('/categories', 'CategoryController@index')->name('all-categories');
     Route::get('/create-category', 'CategoryController@create')->name('create-category');
     Route::post('/store-category', 'CategoryController@store')->name('store-category');
     Route::get('/show-category/{category}', 'CategoryController@show')->name('show-category');
@@ -72,6 +59,8 @@ Route::group(['middleware' => ['web']], function()  {
     Route::get('/show-product/{product}', 'ProductController@show')->name('show-product');
     Route::get('/edit-product/{product}', 'ProductController@edit')->name('edit-product');
     Route::post('update-product/{product}', 'ProductController@update')->name('update-product');
-    Route::delete('delete-product','ProductController@destroy')->name('delete-product');
+    // Route::delete('delete-product','ProductController@destroy')->name('delete-product');
+    Route::get('/{product}/delete-product', 'ProductController@destroy')->name('delete-product');
+
 
 });
