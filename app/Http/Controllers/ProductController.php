@@ -18,6 +18,7 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
+        // Pull products only according to categories
         if( $request->get('category') ) {
             $category_name = $request->get('category');
             $category_id = Category::where('name',$category_name)->value('id');     
@@ -26,6 +27,7 @@ class ProductController extends Controller
             return view('enproduct.product_card')
                ->with('products', $products);  
         }
+        // to display all products
         $products = Product::all();
         return view('enproduct.product_card')
                ->with('products', $products);   
@@ -75,7 +77,13 @@ class ProductController extends Controller
         $product->image = asset("storage" . $exploded_string[1]);
         $product->save();
 
-       return redirect()->route('welcome')->with('product',$product);
+        return response()->json([
+            "success" => false,
+            "message"  => "Product created",
+            "product" => $product,
+        ],400);
+
+    //    return redirect()->route('welcome')->with('product',$product);
     }
 
     /**

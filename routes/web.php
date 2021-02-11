@@ -50,7 +50,11 @@ Route::group(['middleware' => ['web']], function()  {
     Route::get('/show-category/{category}', 'CategoryController@show')->name('show-category');
     Route::get('/edit-category/{category}', 'CategoryController@edit')->name('edit-category');
     Route::post('update-category/{category}', 'CategoryController@update')->name('update-category');
-    Route::delete('delete-category','CategoryController@destroy')->name('delete-category');
+    // Route::delete('delete-category','CategoryController@destroy')->name('delete-category');
+    // Route::delete('delete-category/{category}','CategoryController@destroy')->name('delete-category');
+    Route::get('/{category}/delete-category', 'CategoryController@destroy')->name('delete-category');
+
+
 
 /**Product Routes */
     Route::get('/products', 'ProductController@index' )->name('all-products');

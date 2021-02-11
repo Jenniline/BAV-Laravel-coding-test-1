@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Product;
+
 
 
 class CategoryController extends Controller
@@ -38,24 +40,6 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        // $this->validate($request, array(
-        //     'category_name' => 'required|min:3|max:20',
-        //     'image.*' => 'image|mimes:jpg,png,jpeg',
-        // ));
-
-        //  $category = new Category;
-        //  $category->name = $request->category_name;
-        //  $category->save();
-
-        //  $input = $request->file();
-
-        //  $images = $input['image'];
- 
-        //  $path = $request->file('image')->store('public/categoryImages');
-        //  $exploded_string = explode("public", $path);
-        //  $category->image = asset("storage" . $exploded_string[1]);
-        //  $category->save();
-
          $this->validate($request, array(
             'category_name' => 'required|min:3|max:20',
             'image.*' => 'image|mimes:jpg,png,jpeg',
@@ -73,7 +57,12 @@ class CategoryController extends Controller
         $category->save();
         //dd($exploded_string);
 
-        return redirect()->route('all-categories')->with('category',$category);
+        // return redirect()->route('all-categories')->with('category',$category);
+        return response()->json([
+            "success" => false,
+            "message"  => "Category created",
+            "category" => $category,
+        ],400);
     }
 
     /**
@@ -132,10 +121,12 @@ class CategoryController extends Controller
             $category->save(); 
         }
 
-        // Session::flash('success','The blog post was succesfully saved!');
+        // return redirect()->route('show-category', $category->id);
 
-        // redirect to another page 
-        return redirect()->route('show-category', $category->id);
+        return response()->json([
+            "success"=>true,
+            "message"=>"Category updated successfully"
+        ], 200);
     }
 
     /**
@@ -146,31 +137,21 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        // $products = Product::where('category_id', $id)->get();
+        $products = Product::where('category_id', $id)->get();
 
-        // if (sizeof($products) > 0) {
+        if (sizeof($products) > 0) {
             
-        //     return response()->json([
-        //         "success" => false,
-        //         "message"  => "Category cannot be deleted it is associated with products",
-        //     ],400);
-        // }
-        
-        // $category = Category::findOrFail($id);
-        // $categoryImgUrl = $category->url; 
+            return response()->json([
+                "success" => false,
+                "message"  => "Category cannot be deleted it is associated with products",
+            ],400);
+        }
+        return response()->json([
+            "success" => true,
+            "message"  => "Category deleted not associated with any product",
+        ],200);
 
-        $category = Category::find($id);
 
-        $category->delete();
-
-        // $categoryArray = explode('/categoryImages/', $categoryImgUrl);
-        // $oldPath = storage_path("app/public/categoryImages/" . end($categoryArray));
-        // @unlink($oldPath);
-
-        // Session::flash('success','The blog post was succesfully saved!');
-
-        // redirect to another page 
-        return redirect()->route('homepage', $category->id);
-     
+    
     }
 }
